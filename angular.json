@@ -3,5 +3,46 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "oneiam-js": {
+      "projectType": "library",
+      "root": "projects/oneiam-js",
+      "sourceRoot": "projects/oneiam-js/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/oneiam-js/tsconfig.lib.json",
+            "project": "projects/oneiam-js/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/oneiam-js/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/oneiam-js/src/test.ts",
+            "tsConfig": "projects/oneiam-js/tsconfig.spec.json",
+            "karmaConfig": "projects/oneiam-js/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/oneiam-js/tsconfig.lib.json",
+              "projects/oneiam-js/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "oneiam-js"
 }
